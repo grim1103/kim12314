@@ -1,8 +1,6 @@
 package net.member.action;
 
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,34 +17,36 @@ public class MemberAddAction implements Action{
 		MemberDAO memberdao = new MemberDAO();
 		MemberBean memberbean = new MemberBean();
 		request.setCharacterEncoding("euc-kr");
-		
-		memberbean.setMember_id(request.getParameter("id"));
-		memberbean.setMember_pw(request.getParameter("pw"));
-		memberbean.setMember_email(request.getParameter("email"));
-		memberbean.setMember_name(request.getParameter("name"));
-		memberbean.setMember_jumin(request.getParameter("jumin")+"-"+request.getParameter("jumin2"));
-		memberbean.setMember_address(request.getParameter("postcode")+"/"+request.getParameter("address1")+"/"+request.getParameter("address2"));
-		memberbean.setMember_phone(request.getParameter("phone"));
-		memberbean.setMember_postcode(request.getParameter("postcode"));
-		memberbean.setMember_birth(request.getParameter("year")+"/"+request.getParameter("month")+"/"+request.getParameter("day"));
-		memberbean.setMember_date(request.getParameter("date"));
-		memberbean.setMember_point(Integer.parseInt(request.getParameter("point")));
-		
+
+		String arr[] = request.getParameterValues("inter");
+		int temp = arr.length;
+		String inter="";
+		for(int i = 0;i<temp;i++) {
+			inter = inter+arr[i]+" ";
+		}
+
+
+		memberbean.setId(request.getParameter("id"));
+		memberbean.setPw(request.getParameter("pw"));
+		memberbean.setEmail(request.getParameter("email"));
+		memberbean.setName(request.getParameter("name"));
+		memberbean.setJumin(request.getParameter("jumin")+"-"+request.getParameter("jumin2"));
+		memberbean.setBirth(request.getParameter("year")+"."+request.getParameter("month")+"."+request.getParameter("day"));
+		memberbean.setIntro(request.getParameter("intro"));
+		memberbean.setInter(inter);
+
 		if(!memberdao.memberInsert(memberbean)) {
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('Join is failed try again')");
+			out.println("alert('123')");
 			out.print("</script>");
-			out.close();
 			return null;
 		}	
-		PrintWriter out = response.getWriter();
-		out.println("<script>");
-		out.println("alert('Congratulation Join is complited')");
-		out.print("</script>");
-		out.close();
+
 		ActionForward forward = new ActionForward();
+
 		forward.setRedirect(true);
+
 		forward.setPath("MemberLoginForm.mo");
 		memberdao.connClose();
 		return forward;

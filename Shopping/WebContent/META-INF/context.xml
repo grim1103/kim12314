@@ -7,6 +7,6 @@
 			username="hr"
 			password="1234"
 			maxActive="20"
-			maxIdle="20"
+			maxIdle="10"
 			maxWait="-1"/>
 </Context>

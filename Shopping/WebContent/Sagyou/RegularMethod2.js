@@ -1,37 +1,4 @@
-function execDaumPostcode(){
-		new daum.Postcode({
-			oncomplete : function(data){
-				
-				var test = data.postcode
-				alert('(구)우편번호'+test);
-				
-				var fullAddr = '';
-				var extraAddr = '';
-				
-				if(data.userSelectedType ==='R'){
-					fullAddr = data.roadAddress;
-				}else{
-					fullAddr = data.jibunAddress;
-				}
-				
-				if(data.userSeletedType ==='R'){
-					if(data.bname !== ''){
-						extraAddt += data.bname;
-					}
-					if(data.buildingName !== ''){
-						extraAddr += (extraAddr !== '' ? ',' +data.buildingName : data.buildingName);
-					}
-					
-					fullAddr += (extraAddr !== '' ? ' ('+extraAddr+')':'');
-				}
-				
-				document.getElementById('postcode').value = data.zonecode;
-				document.getElementById('address1').value = fullAddr;
-				
-				document.getElementById('address2').focus();
-			}
-		}).open();
-	}
+
 
 function call() {
 	var id = document.getElementById("id");

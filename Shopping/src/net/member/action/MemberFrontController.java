@@ -41,7 +41,6 @@ implements javax.servlet.Servlet {
 			forward=new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./Sagyou/joinForm.jsp");
-			
 		}else if(command.equals("/MemberAddAction.mo")) {
 			action = new MemberAddAction();
 			try {
@@ -75,10 +74,12 @@ implements javax.servlet.Servlet {
 			action = new MemberDeleteAction();
 			try {
 				forward = action.execute(request, response);
+				System.out.println("2123");
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
 		}
+		
 		
 		if(forward.isRedirect()){
 			System.out.println("for " + forward.getPath());

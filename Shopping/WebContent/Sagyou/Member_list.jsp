@@ -52,11 +52,11 @@
    for(MemberBean bean : beans){ %>
    <tr>
       <td class = "aa" style = "color:black;">
-         <a href="MemberInfoAction.mo?id=<%=bean.getMember_id() %>">
-         <%=bean.getMember_id() %>
+         <a href="MemberInfoAction.mo?id=<%=bean.getId() %>">
+         <%=bean.getId() %>
          </a>
       </td>
-         <td style = "color:black;"><a href="MemberDeleteAction.mo?id=<%=bean.getMember_id()%>">Delete</a></td>
+         <td style = "color:black;"><a href="MemberDeleteAction.mo?id=<%=bean.getId()%>">Delete</a></td>
    </tr>
    <%}%>
 </table>

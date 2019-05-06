@@ -16,7 +16,7 @@ public class MemberDAO {
 	Connection conn = null;
 	PreparedStatement pt = null;
 	ResultSet re = null;
-
+	request.setCharacterEncoding("euc-kr");
 	
 	public MemberDAO() {
 		try{
